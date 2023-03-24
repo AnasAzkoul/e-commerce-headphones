@@ -1,16 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { cva, VariantProps } from 'class-variance-authority';
 import { navLinksData } from '@/lib/constants/constance';
-
-// const NavigationStyles = cva('', {
-//   variants: {
-//     variant: {
-//       desktop: 'hidden md:flex gap-10 items-center',
-//     },
-//   },
-// });
-
 interface NavigationLinksProps {
   isSidebarOpen: boolean;
 }

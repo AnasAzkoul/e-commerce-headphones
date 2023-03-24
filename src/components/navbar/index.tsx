@@ -6,8 +6,6 @@ import HamburgerMenuButton from './HamburgerMenuButton';
 import {
   AiOutlineShoppingCart,
   AiOutlineUser,
-  AiOutlineMenu,
-  AiOutlineClose,
 } from 'react-icons/ai';
 
 type Props = {};
