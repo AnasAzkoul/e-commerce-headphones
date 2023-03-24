@@ -10,7 +10,9 @@ const Layout = ({children}: Props) => {
     <>
       <Header />
       <main>
-        {children}
+        <div className='max-w-7xl mx-auto bg-bg-light'>
+          {children}
+        </div>
       </main>
     </>
   )

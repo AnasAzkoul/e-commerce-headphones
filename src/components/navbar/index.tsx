@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Logo from './Logo';
+import NavLinks from './NavLinks';
 import SideNav from './SideNav';
-import { navLinksData } from '@/lib/constants/constance';
+import HamburgerMenuButton from './HamburgerMenuButton';
+
 import {
   AiOutlineShoppingCart,
   AiOutlineUser,
@@ -18,31 +19,21 @@ const Header = (props: Props) => {
   return (
     <header className='bg-bg-light'>
       <div className='max-w-7xl mx-auto py-4 px-4 z-50 flex gap-6'>
-        <div className='flex justify-between w-full'>
+        <div className='flex items-center justify-between w-full'>
           <Logo />
-          <div className='flex items-center gap-10'>
-            <nav className='hidden md:flex gap-10 items-center'>
-              <ul className='flex gap-6 text-base font-semibold capitalize'>
-                {navLinksData.map((linkItem) => {
-                  return (
-                    <li key={linkItem.text}>
-                      <Link href={linkItem.link}>{linkItem.text}</Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-            <div className='flex gap-4 text-2xl'>
-              <button onClick={() => setIsSideNavOpen(!isSideNavOpen)} className='md:hidden'>
-                {isSideNavOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
-              </button>
+          <HamburgerMenuButton
+            onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            isSideNavOpen={isSideNavOpen}
+          />
+          <div className='flex items-center gap-14 order-3 md:order-3'>
+            <NavLinks isSidebarOpen={isSideNavOpen}/>
+            <div className='flex gap-8 text-2xl'>
               <AiOutlineShoppingCart />
               <AiOutlineUser />
             </div>
           </div>
         </div>
       </div>
-      <SideNav isSideNavOpen={isSideNavOpen} />
     </header>
   );
 };
