@@ -9,7 +9,7 @@ const NavLinks = ({ isSidebarOpen }: NavigationLinksProps) => {
   return (
     <nav
       className={`flex gap-10 items-center justify-center fixed top-14 left-0 w-full bg-bg-light -z-10 ${
-        isSidebarOpen ? 'translate-y-0' : '-translate-y-full'
+        isSidebarOpen ? 'translate-y-0' : '-translate-y-[15rem]'
       } transition-all duration-100 ease-in pb-2 md:pb-0 md:z-0 md:translate-y-0 md:w-auto md:static`}
     >
       <ul
