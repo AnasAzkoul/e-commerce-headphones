@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
 import NavLinks from './NavLinks';
-import SideNav from './SideNav';
 import HamburgerMenuButton from './HamburgerMenuButton';
 
 import {
