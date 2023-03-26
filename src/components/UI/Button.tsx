@@ -2,23 +2,25 @@ import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary'
+}
 
-const Button = forwardRef(({ className, children, ...props }: ButtonProps) => {
+const Button = ({ className, children, variant = 'primary', onClick,  ...props }: ButtonProps) => {
   return (
-    <ButtonStyles
-      className={`${className}`}
+    <button
+      className={`relative px-8 py-2 text-base bg-black border cursor-pointer text-bg-light hover:bg-bg-light hover:text-black hover:border-black ${className}`}
+      onClick={onClick}
       {...props}
     >
       {children}
-    </ButtonStyles>
+    </button>
   );
-});
+};
 
-Button.displayName = 'Button';
 
 export default Button;
 
 const ButtonStyles = styled.button`
-  ${tw`px-8 py-2 text-base bg-black border text-bg-light hover:bg-bg-light hover:text-black hover:border-black`}
+  ${tw``}
 `;

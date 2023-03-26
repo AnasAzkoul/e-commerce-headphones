@@ -7,6 +7,9 @@ module.exports = {
         'bg-light': '#EFE9E7',
         primary: '#90A2D8',
       },
+      backgroundPosition: {
+        hero: '20% 3.5rem',
+      },
     },
   },
   plugins: [],
