@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import Link from 'next/link';
 import { navLinksData } from '@/lib/constants/constance';
 interface NavigationLinksProps {
@@ -7,15 +9,8 @@ interface NavigationLinksProps {
 
 const NavLinks = ({ isSidebarOpen }: NavigationLinksProps) => {
   return (
-    <nav
-      className={`flex gap-10 items-center justify-center fixed top-14 left-0 w-full bg-bg-light -z-10 ${
-        isSidebarOpen ? 'translate-y-0' : '-translate-y-[15rem]'
-      } transition-all duration-100 ease-in pb-2 md:pb-0 md:z-0 md:translate-y-0 md:w-auto md:static`}
-    >
-      <ul
-        className='flex flex-col items-center gap-6 text-base font-semibold capitalize md:flex-row md:gap-8'
-        id='main-menu'
-      >
+    <NavContainer isSidebarOpen={isSidebarOpen}>
+      <NavLinksContainer id='main-menu'>
         {navLinksData.map((linkItem) => {
           return (
             <li key={linkItem.text}>
@@ -23,9 +18,20 @@ const NavLinks = ({ isSidebarOpen }: NavigationLinksProps) => {
             </li>
           );
         })}
-      </ul>
-    </nav>
+      </NavLinksContainer>
+    </NavContainer>
   );
 };
 
 export default NavLinks;
+
+const NavContainer = styled.nav<{ isSidebarOpen: boolean }>`
+  ${tw`fixed left-0 flex items-center justify-center w-full gap-10 pb-2 transition-all duration-100 ease-in top-14 bg-bg-light -z-10 md:pb-0 md:z-0 md:translate-y-0 md:w-auto md:static`}
+
+  ${(props) =>
+    props.isSidebarOpen ? tw`translate-y-0` : tw`-translate-y-[15rem]`}
+`;
+
+const NavLinksContainer = styled.ul`
+  ${tw`flex flex-col items-center gap-6 text-base font-semibold capitalize md:flex-row md:gap-8`}
+`;

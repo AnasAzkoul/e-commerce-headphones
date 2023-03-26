@@ -2,11 +2,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Link from 'next/link';
 import Button from '../UI/Button';
 
 type Props = {};
 
 const HeroContent = (props: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    // e.stopPropagation();
+    console.log('clicked');
+  };
+
   return (
     <Container>
       <HeroMainHeading>
@@ -15,7 +21,14 @@ const HeroContent = (props: Props) => {
         <span className='text-primary'> covered</span>
       </HeroMainHeading>
       <HeroPara>Shop our latest headphones</HeroPara>
-      <Button className='relative z-50 self-center -mt-4' onClick={() => console.log('clicked')}>Explore CyberFonz.</Button>
+      {/* <Button className='relative z-50 self-center -mt-4' onClick={() => console.log('clicked')}>Explore CyberFonz.</Button> */}
+      <button
+        className='px-8 py-2 bg-primary text-bg-light z-[10000000]'
+        type='button'
+        onClick={handleClick}
+      >
+        <Link href='/products'>Explore CyberFonz.</Link>
+      </button>
     </Container>
   );
 };
@@ -23,7 +36,7 @@ const HeroContent = (props: Props) => {
 export default HeroContent;
 
 const Container = styled.div`
-  ${tw`relative flex flex-col items-center justify-center gap-10 py-20`}
+  ${tw`flex flex-col items-center justify-center gap-10 py-20`}
 `;
 
 const HeroMainHeading = styled.h1`

@@ -1,38 +1,59 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import Logo from './Logo';
 import NavLinks from './NavLinks';
 import HamburgerMenuButton from './HamburgerMenuButton';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-import {
-  AiOutlineShoppingCart,
-  AiOutlineUser,
-} from 'react-icons/ai';
 
 type Props = {};
 
-const Header = (props: Props) => {
+const Header = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
 
   return (
-    <header className='bg-bg-light z-50 fixed top-0 left-0 w-full'>
-      <div className='max-w-7xl mx-auto py-4 px-4 flex gap-6'>
-        <div className='flex items-center justify-between w-full'>
+    <HeaderContainer>
+      <Container>
+        <NavContainer>
           <Logo />
           <HamburgerMenuButton
             onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             isSideNavOpen={isSideNavOpen}
           />
-          <div className='flex items-center gap-14 order-3 md:order-3'>
+          <NavLinksContainer>
             <NavLinks isSidebarOpen={isSideNavOpen} />
+            <SignInButton onClick={() => console.log('clicked')}>
+              Login
+            </SignInButton>
             <div className='flex gap-8 text-2xl'>
               <AiOutlineShoppingCart />
-              <AiOutlineUser />
             </div>
-          </div>
-        </div>
-      </div>
-    </header>
+          </NavLinksContainer>
+        </NavContainer>
+      </Container>
+    </HeaderContainer>
   );
 };
 
 export default Header;
+
+const HeaderContainer = styled.header`
+  ${tw`fixed top-0 left-0 z-50 w-full bg-bg-light`}
+`;
+
+const Container = styled.div`
+  ${tw`flex gap-6 px-4 py-4 mx-auto max-w-7xl`}
+`;
+
+const NavContainer = styled.div`
+  ${tw`flex items-center justify-between w-full`}
+`;
+
+const NavLinksContainer = styled.div`
+  ${tw`flex items-center order-3 gap-14 md:order-3`}
+`;
+
+const SignInButton = styled.button`
+  ${tw`text-base`}
+`;

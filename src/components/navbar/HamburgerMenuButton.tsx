@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import {
   AiOutlineMenu,
   AiOutlineClose,
@@ -16,20 +18,25 @@ const HamburgerMenuButton = ({
 }: HamburgerBtnProps) => {
 
   return (
-    <button
+    <HamburgerButton
       role='button'
       aria-expanded={isSideNavOpen}
       aria-controls='main-menu'
       onClick={onClick}
-      className='md:hidden mx-4 order-1 md:order-2'
+      className=''
     >
       {isSideNavOpen ? (
         <AiOutlineClose size={18} />
       ) : (
         <AiOutlineMenu size={18} />
       )}
-    </button>
+    </HamburgerButton>
   );
 };
 
-export default HamburgerMenuButton
+export default HamburgerMenuButton;
+
+
+const HamburgerButton = styled.button`
+  ${tw`order-1 mx-4 md:hidden md:order-2`}
+`;
