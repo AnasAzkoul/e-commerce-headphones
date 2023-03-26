@@ -7,6 +7,10 @@ import Image from 'next/image';
 type Props = {};
 
 const HeroSection = (props: Props) => {
+
+  const imageStyles = 'rounded-full w-80 h-80  md:w-96 md:h-96 ';
+
+
   return (
     <PageSection className='-z-20'>
       <div className='py-24 space-y-4 grid md:grid-cols-2'>
@@ -14,10 +18,10 @@ const HeroSection = (props: Props) => {
         <div className='flex justify-center relative justify-self-end'>
           <Image
             src='/images/hero.jpg'
-            width={400}
+            width={700}
             height={400}
             alt='a person listening to music on headphones'
-            className='rounded-full w-80 h-80 md:w-96 md:h-96 object-cover object-left-bottom'
+            className='object-cover object-left-top rounded-md'
           />
         </div>
       </div>
