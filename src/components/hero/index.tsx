@@ -3,11 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import HeroContent from './HeroContent';
-import Button from '../UI/Button';
-
-
-const overlay =
-  "";
 
 type Props = {};
 
@@ -28,7 +23,7 @@ const HeroSection = (props: Props) => {
 export default HeroSection;
 
 const BackgroundImage = styled.div`
-  ${tw`bg-[url('/images/hero-large.jpg')] bg-cover bg-no-repeat bg-fixed bg-hero before:content-[''] before:absolute before:inset-0 before:bg-indigo-600/20`}
+  ${tw`bg-[url('/images/hero-large.jpg')] bg-cover bg-no-repeat bg-fixed bg-hero before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-l before:from-gray-800 md:before:from-gray-900`}
 `;
 
 const HeroContainer = styled.div`

@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
+import Link from 'next/link';
 
-type Props = {}
+type Props = {};
 
 const Logo = (props: Props) => {
   return (
-    <div className='text-lg font-bold mx-auto md:mx-0 order-2 md:order-1 text-primary'>CyberFonz.</div>
-  )
-}
+    <LogoStyles>
+      <Link href='/' className='w-full h-full cursor-pointer'>CyberFonz.</Link>
+    </LogoStyles>
+  );
+};
 
-export default Logo
+export default Logo;
+
+const LogoStyles = styled.div`
+  ${tw`order-2 mx-auto text-lg font-bold md:mx-0 md:order-1 text-primary`}
+`;
