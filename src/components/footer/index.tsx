@@ -50,22 +50,22 @@ const Container = styled.div`
 `;
 
 const FooterContentContainer = styled.div`
-  ${tw`flex items-center justify-between gap-4 pb-4`}
+  ${tw`flex flex-wrap items-center justify-between gap-4 pb-4`}
 `;
 
 const FooterLogo = styled(Logo)`
-  ${tw`order-1`}
+  ${tw`order-1 mx-0`}
 `;
 const SupportEmail = styled.span`
-  ${tw`order-2 mr-auto text-sm`}
+  ${tw`order-3 text-sm md:mr-auto md:order-2`}
 `;
 
 const SocialIconsContainer = styled.div`
-  ${tw`flex order-3 gap-4`}
+  ${tw`flex order-2 gap-4 md:order-3`}
 `;
 
 const FooterLinks = styled.div`
-  ${tw`flex items-center justify-between pt-4`}
+  ${tw`flex flex-wrap items-center justify-between pt-4`}
 `;
 
 const RightsReserved = styled.p`
@@ -73,7 +73,7 @@ const RightsReserved = styled.p`
 `;
 
 const LinksContainer = styled.div`
-  ${tw`flex gap-8`}
+  ${tw`flex flex-wrap mt-4 md:gap-8 md:mt-0 gap-x-4 gap-y-2`}
 `;
 
 const FooterLink = styled(Link)`

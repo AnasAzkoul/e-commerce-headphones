@@ -42,7 +42,6 @@ const HeroButton = styled(Button)`
   ${tw`relative -translate-x-1/2 -top-32 left-1/2`}
 `;
 
-
 export const getServerSideProps: GetServerSideProps = async() => {
   const query = '*[_type == "product"]';
   const products = await client.fetch<ProductType[]>(query);
