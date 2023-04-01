@@ -3,12 +3,20 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Link from 'next/link';
 
-type Props = {};
+interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const Logo = (props: Props) => {
+const Logo = ({ className, ...props }: LogoProps) => {
   return (
-    <LogoStyles>
-      <Link href='/' className='w-full h-full cursor-pointer'>CyberFonz.</Link>
+    <LogoStyles
+      className={className}
+      {...props}
+    >
+      <Link
+        href='/'
+        className='w-full h-full cursor-pointer'
+      >
+        CyberFonz.
+      </Link>
     </LogoStyles>
   );
 };

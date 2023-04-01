@@ -16,10 +16,10 @@ const SingleProductCard = ({ product }: SingleProductCardTypes) => {
     return urlFor(product.image[0]).width(200).url();
   };
 
-  const discountedPrice = (
+  const discountedPrice = product.discount.discount && ((
     product.price -
     (product.discount.amount / 100) * product.price
-  ).toFixed(2);
+  ).toFixed(2));
 
   return (
     <Container>
@@ -57,16 +57,16 @@ const SingleProductCard = ({ product }: SingleProductCardTypes) => {
 export default SingleProductCard;
 
 const Container = styled.div`
-  ${tw`grid rounded-xl bg-secondary grid-cols-card`}
+  ${tw`grid rounded-xl bg-primary-light grid-cols-card`}
 `;
 
 const ProductNameContainer = styled.div`
   writing-mode: vertical-lr;
-  ${tw`flex items-center justify-center bg-gray-500 text-bg-light rounded-l-xl`};
+  ${tw`flex items-center justify-center bg-black text-bg-light rounded-l-xl`};
 `;
 
 const ProductName = styled.h3`
-  ${tw`my-8 text-xl font-semibold capitalize`}
+  ${tw`my-8 text-xl font-semibold tracking-widest capitalize`}
 `;
 
 const ImageContainer = styled.div`
