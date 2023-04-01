@@ -8,11 +8,16 @@ module.exports = {
         primary: '#90A2D8',
         'primary-dark': '#6881ca',
         'primary-light': '#b4c0e4',
+        secondary: '#a9b83d',
       },
       backgroundPosition: {
         hero: '20% 3.5rem',
       },
+      gridTemplateColumns: {
+        responsive: 'repeat(auto-fit, minmax(250px, 1fr))',
+        card: '50px 1fr',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 };

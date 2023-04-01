@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import PageSection from '@/components/UI/PageSection';
+import ProductsList from '@/components/productList';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Link from 'next/link';
@@ -8,6 +10,7 @@ import Button from '@/components/UI/Button';
 import {client} from '../lib/client';
 import { GetServerSideProps } from 'next';
 import type { ProductType } from '@/lib/types/clientTypes';
+import useLoadAllProducts from '@/lib/hooks/useLoadAllProducts';
 
 
 interface HomePageProps {
@@ -15,6 +18,7 @@ interface HomePageProps {
 }
 
 function Home({products}:HomePageProps) {
+  useLoadAllProducts(products);
 
   return (
     <>
@@ -23,6 +27,10 @@ function Home({products}:HomePageProps) {
         <HeroButton>
           <Link href='/products'>Explore CyberFonz.</Link>
         </HeroButton>
+        <PageSection className='py-28'>
+          <h2 className='py-6 text-3xl font-bold text-center capitalize'>Our Favorites</h2>
+          <ProductsList />
+        </PageSection>
       </Layout>
     </>
   );
@@ -38,7 +46,7 @@ const HeroButton = styled(Button)`
 export const getServerSideProps: GetServerSideProps = async() => {
   const query = '*[_type == "product"]';
   const products = await client.fetch<ProductType[]>(query);
-  console.log(products)
+
   return {
     props: {
       products

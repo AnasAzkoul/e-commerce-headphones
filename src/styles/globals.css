@@ -6,4 +6,10 @@
   header {
     overflow: hidden;
   }
+
+
+
+  body {
+    @apply bg-bg-light;
+  }
 }

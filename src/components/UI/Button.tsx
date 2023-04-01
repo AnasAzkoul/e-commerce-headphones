@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'outlined'
 }
 
 const Button = ({ className, children, variant = 'primary', onClick,  ...props }: ButtonProps) => {
@@ -22,11 +22,16 @@ const Button = ({ className, children, variant = 'primary', onClick,  ...props }
 
 export default Button;
 
-const ButtonStyles = styled.button<{ variant: 'primary' | 'secondary' }>`
+const ButtonStyles = styled.button<{ variant: 'primary' | 'secondary' | 'outlined'}>`
   ${tw`px-8 py-2 text-base cursor-pointer`}
 
-  ${(props) =>
-    props.variant === 'primary'
-      ? tw`bg-primary text-bg-light hover:bg-primary-dark`
-      : tw``}
+  ${(props) => {
+    if(props.variant === 'primary') {
+      return tw`border bg-primary text-bg-light hover:bg-bg-light hover:text-primary border-primary`;
+    }
+
+    if(props.variant === 'outlined') {
+      return tw`border bg-bg-light border-primary text-primary hover:bg-primary hover:text-bg-light`
+    }
+  }}
 `;

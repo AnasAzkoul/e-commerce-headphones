@@ -24,6 +24,10 @@ const ProductSchema = z.object({
   slug: z.object({
     _type: z.literal('slug'),
     current: z.string()
+  }),
+  discount: z.object({
+    discount: z.boolean(),
+    amount: z.number()
   })
 })
 
