@@ -8,6 +8,7 @@ import ProductDetails from '@/components/productPageComponents/ProductDetails';
 import type { GetServerSideProps } from 'next';
 import type { ProductType } from '@/lib/types/clientTypes';
 import { client } from '@/lib/client';
+import ImageCarousel from '@/components/productPageComponents/ImageCarousel';
 
 
 type Props = {
@@ -16,14 +17,13 @@ type Props = {
 
 const SingleProductPage = ({ product }: Props) => {
 
-
   return (
     <Layout>
       <div className='px-4 pt-32 mx-auto max-w-7xl'>
         <BreadCrumbs />
         <section className='py-5'>
           <PageContentContainer>
-            <Images images={product.image} />
+            <ImageCarousel images={product.image} />
             <ProductDetails product={product} />
           </PageContentContainer>
         </section>
@@ -33,8 +33,6 @@ const SingleProductPage = ({ product }: Props) => {
 };
 
 export default SingleProductPage;
-
-
 
 const PageContentContainer = styled.div`
   ${tw`flex flex-col gap-10 md:flex-row md:justify-between md:items-start`}

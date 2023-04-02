@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ImageSchemaTypes } from '@/lib/types/clientTypes';
 import Image from 'next/image';
-
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { urlFor } from '@/lib/client';
@@ -11,8 +10,6 @@ type Props = {
 };
 
 const Images = ({ images }: Props) => {
-
-
 
   const ImageURLLoader = (index: number, width:number) => {
     return urlFor(images[index]).width(width).url();
