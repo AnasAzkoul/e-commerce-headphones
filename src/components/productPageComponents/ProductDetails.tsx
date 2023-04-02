@@ -33,8 +33,9 @@ const ProductDetails = ({ product }: Props) => {
         <div className='flex gap-2'>
           <input
             type='number'
-            className='w-20 border border-gray-400 bg-bg-light focus:ring-1 focus:ring-primary form-input'
+            className='w-20 border border-gray-400 bg-bg-light focus:ring-1 focus:ring-primary form-input placeholder:text-gray-400'
             min={0}
+            placeholder='QTY'
           />
           <Button className=''>add to cart</Button>
         </div>

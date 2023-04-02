@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ImageSchemaTypes } from '@/lib/types/clientTypes';
 import Image from 'next/image';
-import useImagesURLs from '@/lib/hooks/useImagesURLs';
+
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { urlFor } from '@/lib/client';
@@ -11,8 +11,11 @@ type Props = {
 };
 
 const Images = ({ images }: Props) => {
-  const ImageURLLoader = (index: number) => {
-    return urlFor(images[index]).width(300).url();
+
+
+
+  const ImageURLLoader = (index: number, width:number) => {
+    return urlFor(images[index]).width(width).url();
   };
 
   return (
@@ -22,19 +25,19 @@ const Images = ({ images }: Props) => {
           alt='some image'
           src={images[0]._key}
           fill
-          loader={() => ImageURLLoader(0)}
+          loader={() => ImageURLLoader(0, 300)}
         />
       </ActiveImageContainer>
       <ImagesGalleryContainer>
         {images.map((image, index) => {
           return (
             <ImageGalleryContainer key={image._key}>
-              <Image
+              <SingleImage
                 alt='some image'
                 src={image._key}
                 width={100}
                 height={50}
-                loader={() => ImageURLLoader(index)}
+                loader={() => ImageURLLoader(index, 100)}
               />
             </ImageGalleryContainer>
           );
@@ -61,3 +64,7 @@ const ImagesGalleryContainer = styled.div`
 const ImageGalleryContainer = styled.div`
   ${tw`bg-gray-300`}
 `;
+
+const SingleImage = styled(Image)`
+  ${tw`object-cover`}
+`

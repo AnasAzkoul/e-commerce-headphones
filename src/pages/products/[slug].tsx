@@ -1,6 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
+import BreadCrumbs from '@/components/UI/BreadCrumbs';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import Images from '@/components/productPageComponents/Images';
@@ -9,21 +9,22 @@ import type { GetServerSideProps } from 'next';
 import type { ProductType } from '@/lib/types/clientTypes';
 import { client } from '@/lib/client';
 
+
 type Props = {
   product: ProductType;
 };
 
 const SingleProductPage = ({ product }: Props) => {
+
+
   return (
     <Layout>
-      <div className='max-w-7xl mx-auto pt-20 px-4'>
-        <BreadCrumbs>
-
-        </BreadCrumbs>
-        <section className='py-20'>
+      <div className='px-4 pt-32 mx-auto max-w-7xl'>
+        <BreadCrumbs />
+        <section className='py-5'>
           <PageContentContainer>
             <Images images={product.image} />
-            <ProductDetails product={product}/>
+            <ProductDetails product={product} />
           </PageContentContainer>
         </section>
       </div>
@@ -33,12 +34,10 @@ const SingleProductPage = ({ product }: Props) => {
 
 export default SingleProductPage;
 
-const BreadCrumbs = styled.div`
-  ${tw``}
-`;
+
 
 const PageContentContainer = styled.div`
-  ${tw`flex flex-col md:flex-row md:justify-between md:items-start gap-10`}
+  ${tw`flex flex-col gap-10 md:flex-row md:justify-between md:items-start`}
 `;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
