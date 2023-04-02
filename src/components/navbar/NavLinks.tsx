@@ -14,7 +14,7 @@ const NavLinks = ({ isSidebarOpen }: NavigationLinksProps) => {
         {navLinksData.map((linkItem) => {
           return (
             <li key={linkItem.text}>
-              <Link href={linkItem.link}>{linkItem.text}</Link>
+              <NavLink href={linkItem.link}>{linkItem.text}</NavLink>
             </li>
           );
         })}
@@ -34,4 +34,8 @@ const NavContainer = styled.nav<{ isSidebarOpen: boolean }>`
 
 const NavLinksContainer = styled.ul`
   ${tw`flex flex-col items-center gap-6 text-base font-semibold capitalize md:flex-row md:gap-8`}
+`;
+
+const NavLink = styled(Link)`
+  ${tw`hover:text-primary`}
 `;

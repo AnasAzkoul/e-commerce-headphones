@@ -57,7 +57,7 @@ const SingleProductCard = ({ product }: SingleProductCardTypes) => {
 export default SingleProductCard;
 
 const Container = styled.div`
-  ${tw`grid rounded-xl bg-primary-light grid-cols-card`}
+  ${tw`grid transition-all duration-200 ease-linear cursor-pointer rounded-xl bg-primary-light grid-cols-card hover:scale-105`}
 `;
 
 const ProductNameContainer = styled.div`

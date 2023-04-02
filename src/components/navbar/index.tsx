@@ -16,18 +16,20 @@ const Header = () => {
     <HeaderContainer>
       <Container>
         <NavContainer>
-          <Logo />
+          <Logo className='mx-auto'/>
           <HamburgerMenuButton
             onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             isSideNavOpen={isSideNavOpen}
           />
           <NavLinksContainer>
             <NavLinks isSidebarOpen={isSideNavOpen} />
-            <SignInButton onClick={() => console.log('clicked')}>
-              Login
-            </SignInButton>
-            <div className='flex gap-8 text-2xl'>
-              <AiOutlineShoppingCart />
+            <div className='flex gap-8'>
+              <SignInButton onClick={() => console.log('clicked')}>
+                Login
+              </SignInButton>
+              <div className='flex gap-8 text-2xl'>
+                <AiOutlineShoppingCart />
+              </div>
             </div>
           </NavLinksContainer>
         </NavContainer>
@@ -51,7 +53,7 @@ const NavContainer = styled.div`
 `;
 
 const NavLinksContainer = styled.div`
-  ${tw`flex items-center order-3 gap-14 md:order-3`}
+  ${tw`flex items-center order-3 gap-14`}
 `;
 
 const SignInButton = styled.button`
