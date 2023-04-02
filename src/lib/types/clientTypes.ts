@@ -9,7 +9,7 @@ const ImageSchema = z.object({
   })
 });
 
-type ImageSchemaTypes = z.infer<typeof ImageSchema>;
+export type ImageSchemaTypes = z.infer<typeof ImageSchema>;
 
 const ProductSchema = z.object({
   _createdAt: z.date(),
@@ -28,7 +28,8 @@ const ProductSchema = z.object({
   discount: z.object({
     discount: z.boolean(),
     amount: z.number()
-  })
+  }),
+  category: z.string()
 })
 
 export type ProductType = z.infer<typeof ProductSchema>;

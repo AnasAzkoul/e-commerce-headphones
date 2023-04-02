@@ -6,7 +6,7 @@ type Props = {}
 const ProductsPage = (props: Props) => {
   return (
     <Layout>
-
+      
     </Layout>
   )
 }

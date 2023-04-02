@@ -28,7 +28,7 @@ const Header = () => {
                 Login
               </SignInButton>
               <div className='flex gap-8 text-2xl'>
-                <AiOutlineShoppingCart />
+                <AiOutlineShoppingCart className='cursor-pointer hover:text-primary-dark'/>
               </div>
             </div>
           </NavLinksContainer>
@@ -57,5 +57,5 @@ const NavLinksContainer = styled.div`
 `;
 
 const SignInButton = styled.button`
-  ${tw`text-base`}
+  ${tw`text-base hover:text-primary-dark`}
 `;

@@ -6,12 +6,19 @@ import Image from 'next/image';
 import { urlFor } from '@/lib/client';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import WishListButton from '../UI/WishListButton';
+import { useRouter } from 'next/router';
 
 interface SingleProductCardTypes {
   product: ProductType;
 }
 
 const SingleProductCard = ({ product }: SingleProductCardTypes) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/products/${product.slug.current}`);
+  }
+
   const imageURLLoader = () => {
     return urlFor(product.image[0]).width(200).url();
   };
@@ -22,7 +29,7 @@ const SingleProductCard = ({ product }: SingleProductCardTypes) => {
   ).toFixed(2));
 
   return (
-    <Container>
+    <Container onClick={handleClick}>
       <ProductNameContainer>
         <ProductName>{product.name}</ProductName>
       </ProductNameContainer>
