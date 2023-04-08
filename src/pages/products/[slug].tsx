@@ -3,7 +3,6 @@ import Layout from '@/components/Layout';
 import BreadCrumbs from '@/components/UI/BreadCrumbs';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import Images from '@/components/productPageComponents/Images';
 import ProductDetails from '@/components/productPageComponents/ProductDetails';
 import type { GetServerSideProps } from 'next';
 import type { ProductType } from '@/lib/types/clientTypes';

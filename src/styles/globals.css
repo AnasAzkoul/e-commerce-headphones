@@ -7,9 +7,12 @@
     overflow: hidden;
   }
 
-
-
   body {
     @apply bg-bg-light;
+  }
+
+  input:focus, input{
+    outline: none;
+    outline: 0;
   }
 }
