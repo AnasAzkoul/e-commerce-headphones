@@ -5,18 +5,28 @@ import Logo from './Logo';
 import NavLinks from './NavLinks';
 import HamburgerMenuButton from './HamburgerMenuButton';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-
+import Link from 'next/link';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 type Props = {};
 
 const Header = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
+  const { data: session } = useSession();
+
+  const handleSingOut = () =>{
+    if(session?.user) {
+      signOut()
+    } else {
+      return;
+    }
+  }
 
   return (
     <HeaderContainer>
       <Container>
         <NavContainer>
-          <Logo className='mx-auto'/>
+          <Logo className='mx-auto' />
           <HamburgerMenuButton
             onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             isSideNavOpen={isSideNavOpen}
@@ -24,11 +34,11 @@ const Header = () => {
           <NavLinksContainer>
             <NavLinks isSidebarOpen={isSideNavOpen} />
             <div className='flex gap-8'>
-              <SignInButton onClick={() => console.log('clicked')}>
-                Login
+              <SignInButton onClick={handleSingOut}>
+                {session?.user ? 'Sign out' : <Link href='/signup'>Login</Link>}
               </SignInButton>
               <div className='flex gap-8 text-2xl'>
-                <AiOutlineShoppingCart className='cursor-pointer hover:text-primary-dark'/>
+                <AiOutlineShoppingCart className='cursor-pointer hover:text-primary-dark' />
               </div>
             </div>
           </NavLinksContainer>

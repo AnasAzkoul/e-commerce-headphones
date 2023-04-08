@@ -3,7 +3,8 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 import Button from '@/components/UI/Button';
 import { FcGoogle } from 'react-icons/fc';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaInfoCircle, FaTimesCircle } from 'react-icons/fa';
+import { useSession, signIn } from 'next-auth/react';
 
 type Props = {};
 
@@ -26,19 +27,20 @@ const SignUp = (props: Props) => {
 
   useEffect(() => {
     const result = EMAIL_REGEX.test(email);
-    console.log(result);
-    console.log(email);
     setValidEmail(result);
   }, [email]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
-    console.log(result);
-    console.log(pwd);
     setValidPwd(result);
     const isMatch = match === pwd;
     setValidMatch(isMatch);
   }, [pwd, match]);
+
+
+  const handleGoogleSignIn = () => {
+    signIn('google', { callbackUrl: '/' });
+  };
 
   return (
     <main className='grid h-screen bg-primary-light place-items-center'>
@@ -68,6 +70,7 @@ const SignUp = (props: Props) => {
               ) : (
                 <FaTimesCircle className='absolute text-xl text-red-500 right-3 top-2.5' />
               )}
+              <div></div>
               <Label htmlFor='email'>Email address</Label>
             </FormControl>
             <FormControl>
@@ -91,6 +94,28 @@ const SignUp = (props: Props) => {
               ) : (
                 <FaTimesCircle className='absolute text-xl text-red-500 right-3 top-2.5' />
               )}
+              <div
+                id='pwdnote'
+                className={`${
+                  focusPwd && !validPwd && pwd
+                    ? 'bg-black p-2 flex gap-3 rounded-md text-bg-light mt-2'
+                    : 'hidden'
+                }`}
+              >
+                <FaInfoCircle className='text-2xl' />
+                <p>
+                  8 to 24 characters.
+                  <br />
+                  Must include uppercase and lowercase letters, a number and a
+                  special character. <br />
+                  allowed special characters{' '}
+                  <span aria-label='exclamation mark'>!</span>
+                  <span aria-label='at symbol'>@</span>
+                  <span aria-label='hash tag'>#</span>
+                  <span aria-label='dollar sign'>$</span>
+                  <span aria-label='percent symbol'>%</span>
+                </p>
+              </div>
               <Label htmlFor='pwd'>Password</Label>
             </FormControl>
             <FormControl>
@@ -105,6 +130,7 @@ const SignUp = (props: Props) => {
                 onBlur={() => setFocusMatch(false)}
                 required
                 aria-invalid={!validMatch ? true : false}
+                aria-describedby='pwdnote'
               />
               {validMatch && match && (
                 <FaCheckCircle className='absolute text-xl text-green-500 right-3 top-2.5' />
@@ -119,13 +145,16 @@ const SignUp = (props: Props) => {
             <div className='flex flex-col gap-2.5'>
               <Button
                 className='rounded-md disabled:bg-gray-500'
-                disabled={!validEmail && !validPwd && !validMatch ? true : false}
+                disabled={
+                  !validEmail && !validPwd && !validMatch ? true : false
+                }
               >
                 Sign up
               </Button>
               <Button
                 className='flex items-center justify-center gap-2 rounded-md'
                 variant='outlined'
+                onClick={handleGoogleSignIn}
               >
                 Google
                 <FcGoogle className='text-xl' />
