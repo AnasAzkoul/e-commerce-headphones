@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaCheckCircle, FaInfoCircle, FaTimesCircle } from 'react-icons/fa';
 import { useSession, signIn } from 'next-auth/react';
 
+
 type Props = {};
 
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
