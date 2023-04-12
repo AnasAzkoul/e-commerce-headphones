@@ -11,6 +11,7 @@ import {client} from '../lib/client';
 import { GetServerSideProps } from 'next';
 import type { ProductType } from '@/lib/types/clientTypes';
 import useLoadAllProducts from '@/lib/hooks/useLoadAllProducts';
+import { Suspense } from 'react';
 
 
 interface HomePageProps {
@@ -21,7 +22,7 @@ function Home({products}:HomePageProps) {
   useLoadAllProducts(products);
 
   return (
-    <>
+    // <Suspense fallback={<h1 className='text-5xl'>Loading .....</h1>}>
       <Layout>
         <HeroSection />
         <HeroButton>
@@ -32,7 +33,6 @@ function Home({products}:HomePageProps) {
           <ProductsList />
         </PageSection>
       </Layout>
-    </>
   );
 }
 

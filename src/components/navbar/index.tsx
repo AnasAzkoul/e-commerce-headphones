@@ -35,7 +35,7 @@ const Header = () => {
             <NavLinks isSidebarOpen={isSideNavOpen} />
             <div className='flex gap-8'>
               <SignInButton onClick={handleSingOut}>
-                {session?.user ? 'Sign out' : <Link href='/signup'>Login</Link>}
+                {session?.user ? 'Sign out' : <Link href='/auth/register'>Login</Link>}
               </SignInButton>
               <div className='flex gap-8 text-2xl'>
                 <AiOutlineShoppingCart className='cursor-pointer hover:text-primary-dark' />

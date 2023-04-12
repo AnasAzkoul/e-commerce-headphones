@@ -12,7 +12,7 @@ const HeroContent = () => {
       <HeroMainHeading>
         We've got your
         <span className=''> ears</span>
-        <span className='text-primary-dark'> covered</span>
+        <span className='text-primary-darkHe'> covered</span>
       </HeroMainHeading>
       <HeroPara>Shop our latest headphones</HeroPara>
     </Container>

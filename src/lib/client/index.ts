@@ -13,7 +13,6 @@ const config: ClientConfig = {
 
 export const client = createClient(config);
 
-
 const builder = imageUrlBuilder(client);
 
 export function urlFor(source: SanityImageSource) {
